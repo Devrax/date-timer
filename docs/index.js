@@ -3,7 +3,7 @@ const STYLES = `
 	width: 15em;
 	margin: 0 auto;
 	padding: 20px;
-	background: linear-gradient(45deg, #2a8224 30%, #dab696);
+	background: #3550b1;
 	border-radius: 30px;
 	box-shadow: 0px 5px 8px 1px #0009, -5px -5px 10px -8px #FA0;
 }
