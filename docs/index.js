@@ -26,6 +26,7 @@ const STYLES = `
 	font-size: 25px;
 	border-radius: 35px;
 	margin: 10px 10px 10px 0;
+	box-shadow: -3px 2px 4px 0px #0000007d;
 }
 
 .btn:focus{
