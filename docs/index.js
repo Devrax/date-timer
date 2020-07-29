@@ -1,61 +1,3 @@
-const STYLES = `
-.clock-container{
-	width: 15em;
-	margin: 0 auto;
-	padding: 20px;
-	background: #3550b1;
-	border-radius: 30px;
-	box-shadow: 0px 5px 8px 1px #0009, -5px -5px 10px -8px #FA0;
-}
-
-.timer{
-	display: block;
-	text-align: center;
-	font-family: sans-serif;
-	font-size: 35px;
-	font-weight: 600;
-	color: white;
-	text-shadow: -5px 2px 9px black;
-}
-
-.btn{
-	background: #FFF;
-	border: none;
-	width: 100%;	
-	height: 35px;
-	font-size: 25px;
-	border-radius: 35px;
-	margin: 10px 10px 10px 0;
-	box-shadow: -3px 2px 4px 0px #0000007d;
-}
-
-.btn:focus{
-	outline: none;
-}
-
-.btn:hover{
-	box-shadow: -3px 3px 7px 2px #00000069 inset;
-}
-
-.btn:active{
-	background: #dadada;
-}
-
-.opt-box{
-	display: block;
-	width: 100%;
-	font-family: sans-serif;
-	font-size: 25px;
-	font-weight: bold;
-	color: #ffffff;
-	background: transparent;
-	border: navajowhite;
-	border-bottom: 1px solid white;
-	filter: drop-shadow(-5px 2px 9px black);
-	margin-bottom: 10px;
-}
-`
-
 
 // Create a class for the element
 class TimerClock extends HTMLElement{
@@ -97,10 +39,8 @@ class TimerClock extends HTMLElement{
 
 	constructor() {
 		super();
-		
-		//Start the internal styles of this component
-		const style = document.createElement('style');
-		style.textContent = STYLES;
+
+		const needShadow = this.getAttribute('data-shadow');
 
 		//Create the wrapper of this component
 		const clockWrapper = document.createElement('div');
@@ -160,14 +100,24 @@ class TimerClock extends HTMLElement{
 		})
 
 		//Append in order each element inside the clockWrapper
-		clockWrapper.appendChild(style);
 		clockWrapper.append(select);
 		clockWrapper.append(timerWrapper);
 		clockWrapper.append(actionButton);
+		
+		if(!!needShadow) {
+			//Start the internal styles of this component
+			const style = document.createElement('link');
+			style.setAttribute('rel', 'stylesheet');
+			style.setAttribute('href', 'styles.css');
 
-		let shadowRoot = this.attachShadow({mode: 'open'});
+			let shadowRoot = this.attachShadow({mode: 'open'});
 
-		shadowRoot.append(clockWrapper);
+			shadowRoot.appendChild(style);
+			shadowRoot.append(clockWrapper);
+		} else {
+			//Just a Custom Element
+			this.appendChild(clockWrapper);
+		}
 	}
 	
 	/**
