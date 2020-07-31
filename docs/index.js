@@ -13,7 +13,7 @@ class TimerClock extends HTMLElement{
 	 * this variable store almost the exact the same moment that stops
 	 * @type Date
 	 */
-	date = null;
+	date = Date.now();
 
 	/**
 	 * Wraps the container of the whole component
@@ -62,7 +62,7 @@ class TimerClock extends HTMLElement{
 
 		select.addEventListener('change', (e) => {
 			this.locale = e.path[0].value;
-			timerWrapper.textContent = this.date.toLocaleString(this.locale, this.options);
+			timerWrapper.textContent = new Date(this.date).toLocaleString(this.locale, this.options);
 		})
 
 		/**
@@ -125,8 +125,9 @@ class TimerClock extends HTMLElement{
 	 */
 	runTimer(clock) {
 		this.timer = setInterval(() => {
-			clock.textContent = new Date().toLocaleString(this.locale, this.options);
-		}, 500)
+			this.date = Date.now();
+			clock.textContent = new Date(this.date).toLocaleString(this.locale, this.options);
+		}, 200)
 	}
 
   }
