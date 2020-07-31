@@ -1,0 +1,1 @@
+System.register(["./p-796852a7.system.js"],(function(){"use strict";var e,t;return{setters:[function(s){e=s.p;t=s.b}],execute:function(){e().then((function(e){return t([["p-ff2d0ae9.system",[[1,"my-component",{timer:[32],isStop:[32],locale:[32],dateMessage:[32]}]]]],e)}))}}}));

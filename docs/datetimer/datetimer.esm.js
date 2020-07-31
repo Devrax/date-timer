@@ -1,0 +1,1 @@
+import{p as a,b as e}from"./p-c16b6c61.js";a().then(a=>e([["p-620aa54b",[[1,"my-component",{timer:[32],isStop:[32],locale:[32],dateMessage:[32]}]]]],a));
